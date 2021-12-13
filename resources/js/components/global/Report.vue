@@ -1,11 +1,11 @@
 <template>
     <div class="container-no-padding">
 
-        <div class="row">
-            <div class="col-md-5">
-                <reactive-multiselect v-model="value" :options="options"></reactive-multiselect>
-            </div>
-        </div>
+<!--        <div class="row">-->
+<!--            <div class="col-md-5">-->
+<!--                <reactive-multiselect v-model="value" :options="options"></reactive-multiselect>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <div class="container mb-4 mt-4">
             <div class="card">
