@@ -109,29 +109,56 @@ class AsteriskImport extends Command {
 				// патчим звонок зная некоторые детали о его ходе
 				$main_item = $this->patchCall($main_item, $group_items);
 
+				$failed_transfer = false;
 				foreach($items_group_by_calldate as $items_for_step) {
 					//записываем данные только в случае если шагов больше одого, ради экономии памяти
 					if( $group_items->count() > 1 || $items_for_step->count() > 1) {
-
 						foreach($items_for_step as $item_for_step) {
+							$transfer_data = json_decode($item_for_step->trdata);
 
 							$is_show = $this->getIsShow($items_for_step, $item_for_step);
-
-							$step = new CallStep([
+							$create_data = [
 								"step"        => $step_count,
 								"call_id"     => $main_item->id,
 								"duration"    => $item_for_step->duration,
 								"expectation" => $item_for_step->duration - $item_for_step->billsec,
 								"number"      => $item_for_step->dst,
-								"status"      => $item_for_step->disposition,
+								"status"      => $item_for_step->trdata ? "NO ANSWER" :  $item_for_step->disposition,
 								"date"        => $item_for_step->calldate,
 								"is_show"     => $is_show
-							]);
-							$step->save();
+							];
+							CallStep::create($create_data);
+							if($item_for_step->trdata){
+								if($transfer_data){
+									if(preg_match("/\d{1,}/", $item_for_step->dst)){
+										$step_count++;
+										$create_data["step"] = $step_count;
+										$create_data["expectation"] = 0;
+										$create_data["duration"] = 0;
+										$create_data["status"] = "ANSWERED";
+										$create_data["number"] = $transfer_data->owner;
+										CallStep::create($create_data);
+									} else {
+										$failed_transfer = $transfer_data;
+									}
+								}
+							}
 						}
 
 					}
 					$step_count++;
+				}
+				if($failed_transfer){
+					$step_count++;
+					$create_data["step"] = $step_count;
+					$create_data["is_show"] = 1;
+					$create_data["expectation"] = 0;
+					$create_data["duration"] = 0;
+					$create_data["status"] = "NO ANSWER";
+					$create_data["number"] = $failed_transfer->tran;
+					CallStep::create($create_data);
+					$create_data["number"] = $failed_transfer->owner;
+					CallStep::create($create_data);
 				}
 				$bar->advance();
 			}
@@ -167,6 +194,7 @@ class AsteriskImport extends Command {
 		if($item_for_step->disposition == "ANSWERED"){
 			if(preg_match("/\d{1,}/", $item_for_step->dst)){
 				if($item_for_step->lastapp == "Transferred Call"){
+					//нужно выделить спровождаемый перевод
 					return 2;
 				}
 

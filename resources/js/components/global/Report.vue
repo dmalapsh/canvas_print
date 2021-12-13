@@ -97,7 +97,7 @@
                             <i class="fas fa-arrow-circle-right text-secondary"></i>
                             <span title="Куда позвонил" class="badge mr-2 badge-secondary">{{item.dialed_phone}}</span>
                             <span :class="step.is_show == 2 ? 'border border-primary': ''" v-for="step in item.call_steps_show" @click="openModal(item.call_steps, step.step)">
-                                <i class="fas fa-arrow-circle-right text-success hoverable"></i>
+                                <i class="fas fa-arrow-circle-right hoverable" :class="step.status == 'ANSWERED' ? 'text-success' : 'text-danger'"></i>
                                 <span title="Кто позвонил" class="badge mr-2 badge-secondary">
                                     {{step.number}} ({{step.duration}} сек.)
                                 </span>

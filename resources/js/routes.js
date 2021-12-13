@@ -24,9 +24,13 @@ export const nativeroutes = [
         path: '/widgets',
         name: 'main-page',
         component: Components.mainPage,
-    },,{
+    },{
         path: '/report',
         name: 'report',
         component: Components.Report,
+    },{
+        path: '/col',
+        name: 'col',
+        component: Components["color-picker"],
     },
 ];

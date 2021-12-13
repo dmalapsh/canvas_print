@@ -54,6 +54,9 @@
                 this.$router.push({ name: 'login' })
             },
             checkAuth() {
+                if (window.location.pathname === "/col") {
+                   return
+                }
                 this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
                 if (!localStorage.getItem('token')) {
                     if (window.location.pathname != "/login") {
