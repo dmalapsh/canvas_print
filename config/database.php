@@ -37,7 +37,7 @@ return [
 
 	    'asterisk' => [
 		    'driver'      => 'mysql',
-		    'host'        => "sip.votel.net",
+		    'host'        => env('DB_ASTER_HOST', '127.0.0.1'),
 		    'port'        => env('DB_PORT', '3306'),
 		    'database'    => env('DB_ASTER_DATABASE') ?? env('DB_DATABASE'),
 		    'username'    => env('DB_ASTER_USERNAME') ?? env('DB_USERNAME'),
