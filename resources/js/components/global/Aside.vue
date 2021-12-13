@@ -33,6 +33,13 @@
             <i class="items-item-icon fas fa-users"></i>Пользователи
           </a>
         </router-link>
+        <router-link v-if="role == 'admin'" to="/monitor"
+        v-slot="{ href, route, navigate, isActive, isExactActive }"
+        >
+          <a :href="href" @click="navigate" :class="{'active': isExactActive}" class="items-item">
+            <i class="items-item-icon fas fa-compass"></i>Монитор
+          </a>
+        </router-link>
          
 <!--         <a href="" class="items-item">-->
 <!--            <i class="items-item-icon fas fa-credit-card"></i>Финансы-->

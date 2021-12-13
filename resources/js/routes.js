@@ -29,6 +29,10 @@ export const nativeroutes = [
         name: 'report',
         component: Components.Report,
     },{
+        path: '/monitor',
+        name: 'monitor',
+        component: Components.MonitorPage,
+    },{
         path: '/col',
         name: 'col',
         component: Components["color-picker"],
