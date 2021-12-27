@@ -26,11 +26,6 @@ Route::group([
     Route::post('call_sink', 'CallController@sink')->name("call.sink");
 });
 
-Route::group([
-	'asterisk'     => 'monitor'
-], function () {
-	Route::post('sip_reload', 'MonitorController@sipReload')->name("monitor.sipReload");
-});
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -41,4 +36,9 @@ Route::middleware('auth:api')->group(function () {
         'call' => 'CallController',
 
     ]);
+	Route::group([
+		'asterisk'     => 'monitor'
+	], function () {
+		Route::post('sip_reload', 'MonitorController@sipReload')->name("monitor.sipReload");
+	});
 });

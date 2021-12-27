@@ -9,3 +9,11 @@
 .phpunit.result.cache
 /.idea/
 /public/update/
+
+acdrv/
+adminer.php
+crm/
+hello.php
+iface/
+index.html
+
