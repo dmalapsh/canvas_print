@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 class MonitorController extends Controller {
 	public function sipReload() {
-//		console_run('asterisk -rx "sip reload"');
+		console_run('asterisk -rx "sip reload"');
+	}
+
+	public function showRegistry() {
+
 		$output = console_run('asterisk -rx "sip show registry"')["output"];
 		$output = explode("\n", $output);
 		preg_match_all("/\S+\s+/", $output[0], $matches);
@@ -24,9 +28,6 @@ class MonitorController extends Controller {
 			}
 		}
 		return response()->json($table);
-	}
-
-	public function showRegistry() {
 
 	}
 }
@@ -44,7 +45,7 @@ function console_run($cmd) {
 	while(!feof($proc)) {
 		$live_output     = fread($proc, 4096);
 		$complete_output = $complete_output . $live_output;
-//		echo "$live_output";
+		echo "$live_output";
 		@ flush();
 	}
 
