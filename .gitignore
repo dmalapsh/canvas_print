@@ -9,11 +9,12 @@
 .phpunit.result.cache
 /.idea/
 /public/update/
+docker-compose.developer.yml
+docker/php-fpm/php.ini
 
 acdrv/
 adminer.php
 crm/
-hello.php
 iface/
 index.html
 

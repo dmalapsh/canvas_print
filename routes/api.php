@@ -20,7 +20,6 @@ Route::group([
     Route::post('logout', 'AuthController@logout')->name("auth.logout");
     Route::post('refresh', 'AuthController@refresh')->name("auth.refresh");
     Route::post('me', 'AuthController@me')->name("auth.me");
-    Route::post('file', 'FileController@upload')->name("file.upload");
     Route::get('call_sink', 'CallController@sink')->name("call.sink");
 
     Route::post('call_sink', 'CallController@sink')->name("call.sink");
