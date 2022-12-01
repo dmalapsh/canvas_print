@@ -6,7 +6,7 @@ docker-compose exec web composer i
 docker-compose exec web npm i
 docker-compose exec web php artisan migrate --seed
 docker-compose exec web php artisan jwt:secret
-docker-compose exec web artisan key:generate
-docker-compose exec -d php artisan serve --host=0.0.0.0 --port=8000
+docker-compose exec web php artisan key:generate
+docker-compose exec -d web php artisan serve --host=0.0.0.0 --port=8000
 
 echo "Раскоментируй command: php artisan serve --host=0.0.0.0 --port=8000 в docker-compose.yml"

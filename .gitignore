@@ -11,6 +11,7 @@
 /public/update/
 docker-compose.developer.yml
 docker/php-fpm/php.ini
+mysql-data
 
 acdrv/
 adminer.php
