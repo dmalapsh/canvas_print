@@ -19,3 +19,4 @@ crm/
 iface/
 index.html
 
+/docker-compose.yml

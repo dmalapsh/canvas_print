@@ -13,41 +13,12 @@
 
       <div class="items">
 
-        <router-link class="" to="/widgets"
+        <router-link v-for="link in links" :to="link.to"
                      v-slot="{ href, route, navigate, isActive, isExactActive }">
           <a :href="href" @click="navigate" :class="{'active': isExactActive}" class="items-item top">
-            <i class="items-item-icon fas fa-compass"></i>Главная
+            <i class="items-item-icon" :class="link.icon"></i>{{link.text}}
           </a>
         </router-link>
-
-        <router-link to="/report" v-slot="{ href, route, navigate, isActive, isExactActive }">
-          <a :href="href" @click="navigate" :class="{'active': isExactActive}" class="items-item">
-            <i class="items-item-icon fas fa-folder-open"></i>Отчет
-          </a>
-        </router-link>
-
-        <router-link v-if="role == 'admin'" to="/users"
-        v-slot="{ href, route, navigate, isActive, isExactActive }"
-        >
-          <a :href="href" @click="navigate" :class="{'active': isExactActive}" class="items-item">
-            <i class="items-item-icon fas fa-users"></i>Пользователи
-          </a>
-        </router-link>
-        <router-link v-if="role == 'admin'" to="/monitor"
-        v-slot="{ href, route, navigate, isActive, isExactActive }"
-        >
-          <a :href="href" @click="navigate" :class="{'active': isExactActive}" class="items-item">
-            <i class="items-item-icon fas fa-compass"></i>Монитор
-          </a>
-        </router-link>
-         
-<!--         <a href="" class="items-item">-->
-<!--            <i class="items-item-icon fas fa-credit-card"></i>Финансы-->
-<!--         </a>-->
-<!--      -->
-<!--         <a href="" class="items-item">-->
-<!--            <i class="items-item-icon clipboard fas fa-clipboard-list"></i>Отчеты-->
-<!--         </a>-->
       </div>
    </aside>
 
@@ -61,7 +32,25 @@
 
         name: "Aside",
         data() {
-            return {}
+            return {
+                links: [
+                    {
+                        text: "Главная",
+                        to: { name: "main-page"},
+                        icon: "fas fa-compass"
+                    },
+                    {
+                        text: "Клиенты",
+                        to: { name: "clients"},
+                        icon: "fas fa-folder-open"
+                    },
+                    {
+                        text: "Пользователи",
+                        to: { name: "users"},
+                        icon: "fas fa-users"
+                    }
+                ]
+            }
 
         },
         computed:{

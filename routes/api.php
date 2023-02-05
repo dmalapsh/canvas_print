@@ -20,9 +20,6 @@ Route::group([
     Route::post('logout', 'AuthController@logout')->name("auth.logout");
     Route::post('refresh', 'AuthController@refresh')->name("auth.refresh");
     Route::post('me', 'AuthController@me')->name("auth.me");
-    Route::get('call_sink', 'CallController@sink')->name("call.sink");
-
-    Route::post('call_sink', 'CallController@sink')->name("call.sink");
 });
 
 Route::group([
@@ -38,12 +35,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::middleware('auth:api')->group(function () {
     Route::apiResources([
         'user' => 'UserController',
-        'call' => 'CallController',
-
     ]);
-	Route::group([
-		'prefix'     => 'monitor'
-	], function () {
-		Route::post('sip_reload', 'MonitorController@sipReload')->name("monitor.sipReload");
-	});
 });

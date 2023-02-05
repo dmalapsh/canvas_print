@@ -18,23 +18,15 @@ export const nativeroutes = [
         component: Components.Login,
     },{
         path: '/users',
-        name: 'Users',
+        name: 'users',
         component: Components.Users,
     },{
         path: '/widgets',
         name: 'main-page',
         component: Components.mainPage,
     },{
-        path: '/report',
-        name: 'report',
-        component: Components.Report,
-    },{
-        path: '/monitor',
-        name: 'monitor',
-        component: Components.MonitorPage,
-    },{
-        path: '/col',
-        name: 'col',
-        component: Components["color-picker"],
-    },
+        path: '/clients',
+        name: 'clients',
+        component: Components.Clients,
+    }
 ];

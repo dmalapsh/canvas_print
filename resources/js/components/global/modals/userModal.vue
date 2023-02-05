@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label class="form-label">Пароль:</label>
                 <input type="text" class="form-control" value="пароль" disabled v-if="!id">
-                <input v-else type="text" class="form-control" v-model="userData.password">
+                <input v-else type="password" class="form-control" v-model="userData.password">
             </div>
             <div class="form-group" v-if="role == 'admin'">
                 <label class="form-label">Роль:</label>
@@ -43,19 +43,19 @@
             </b-button>
         </template>
 
-        <cropUpload
-                @crop-upload-success="cropUploadSuccess"
-                v-model="show"
-                :width="100"
-                :height="100"
-                langType="ru"
-                field="file"
-                :noSquare="true"
-                :url="loaderSet.url"
-                :headers="loaderSet.headers"
-                :params="loaderSet.params"
-                img-format="jpg">
-        </cropUpload>
+<!--        <cropUpload-->
+<!--                @crop-upload-success="cropUploadSuccess"-->
+<!--                v-model="show"-->
+<!--                :width="100"-->
+<!--                :height="100"-->
+<!--                langType="ru"-->
+<!--                field="file"-->
+<!--                :noSquare="true"-->
+<!--                :url="loaderSet.url"-->
+<!--                :headers="loaderSet.headers"-->
+<!--                :params="loaderSet.params"-->
+<!--                img-format="jpg">-->
+<!--        </cropUpload>-->
     </b-modal>
 </template>
 
@@ -72,14 +72,14 @@
                 id: null,
                 userData: {},
                 show: false,
-                loaderSet: {
-                    url: route('file.upload')+'',
-                    params: {
-                        fileable_type: 'user',
-                        is_json: true
-                    },
-                    headers: {Authorization: 'Bearer ' + localStorage.getItem('token')},
-                }
+                // loaderSet: {
+                //     url: route('file.upload')+'',
+                //     params: {
+                //         fileable_type: 'user',
+                //         is_json: true
+                //     },
+                //     headers: {Authorization: 'Bearer ' + localStorage.getItem('token')},
+                // }
             }
         },
         watch: {

@@ -10,8 +10,8 @@
       <div class="header-card" :class="{active: accTools}">
         <div class="header-card-client">
           <div class="header-card-client-line">
-<!--            <img class="header-card-client-line-img" v-if="user.img_url" :src="user.img_url" alt="">-->
-<!--              <img class="header-card-client-line-img" v-else src="/images/Layer 30.png" alt="">-->
+            <img class="header-card-client-line-img" v-if="user.img_url" :src="user.img_url" alt="">
+              <img class="header-card-client-line-img" v-else src="/images/Layer 30.png" alt="">
             <div>
             <div class="header-card-client-line-name"> {{user_fio}}
             </div>
@@ -38,7 +38,7 @@
         </i>
       </div>
     </header>
-    
+
 </template>
 
 <script>
@@ -49,7 +49,7 @@
           accTools: false
         }
       },
-      
+
         methods: {
             logout() {
                 this.$store.commit("setLoggedIn", false);
