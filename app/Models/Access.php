@@ -18,6 +18,6 @@ class Access extends Model
 
     public function accessTemplate()
     {
-        return $this->belongsTo(AccessTemplate::class, 'template_id', 'id');
+        return $this->belongsTo(AccessTemplate::class, 'access_template_id', 'id');
     }
 }

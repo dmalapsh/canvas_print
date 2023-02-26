@@ -13,6 +13,6 @@ class AccessType extends Model
 
     public function accessTemplates()
     {
-        return $this->hasMany(AccessTemplate::class, 'type_id', 'id');
+        return $this->hasMany(AccessTemplate::class, 'access_type_id', 'id');
     }
 }

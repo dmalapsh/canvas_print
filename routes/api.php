@@ -22,12 +22,6 @@ Route::group([
     Route::post('me', 'AuthController@me')->name("auth.me");
 });
 
-Route::group([
-    'asterisk' => 'monitor'
-], function () {
-    Route::post('sip_reload', 'MonitorController@sipReload')->name("monitor.sipReload");
-    Route::post('show_registry', 'MonitorController@showRegistry')->name("monitor.showRegistry");
-});
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
