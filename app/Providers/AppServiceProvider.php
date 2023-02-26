@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class  AppServiceProvider extends ServiceProvider
 {
@@ -41,7 +42,6 @@ class  AppServiceProvider extends ServiceProvider
 //		    'comment' => 'App\ProjectComment',
 //		    'massage' => 'App\ProjectMessage',
 //	    ]);
-
-
+        JsonResource::withoutWrapping();
     }
 }
