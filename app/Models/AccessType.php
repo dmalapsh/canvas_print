@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class AccessType extends Model
 {
     use HasFactory;
+
+    public function access_template()
+    {
+        return $this->hasMany(AccessTemplate::class, 'type_id', 'id');
+    }
 }

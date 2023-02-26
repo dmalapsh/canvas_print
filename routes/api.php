@@ -37,3 +37,10 @@ Route::middleware('auth:api')->group(function () {
         'user' => 'UserController',
     ]);
 });
+
+Route::apiResource('/client', 'ClientController');
+Route::apiResource('/access', 'AccessController');
+
+Route::middleware('auth:api')->group(function () {
+    
+});
