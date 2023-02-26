@@ -17,6 +17,7 @@ class CreateAccessTypesTable extends Migration
             $table->id();
             $table->string('name');
             $table->json('data');
+            $table->text('docs');
             $table->timestamps();
         });
     }

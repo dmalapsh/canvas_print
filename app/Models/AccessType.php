@@ -9,7 +9,9 @@ class AccessType extends Model
 {
     use HasFactory;
 
-    public function access_template()
+    protected $guarded = [];
+
+    public function accessTemplates()
     {
         return $this->hasMany(AccessTemplate::class, 'type_id', 'id');
     }

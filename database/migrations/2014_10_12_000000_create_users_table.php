@@ -12,18 +12,19 @@ class CreateUsersTable extends Migration
      * @return void
      */
     public function up()
-    {if (!Schema::hasTable('users')) {
-        Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('img_url')->nullable();
-            $table->string('password');
-            $table->string('role')->nullable();
-            $table->boolean('is_verified')->default(0);
-            $table->timestamps();
-        });
-    }
+    {
+        if (!Schema::hasTable('users')) {
+            Schema::create('users', function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->string('name');
+                $table->string('email')->unique();
+                $table->string('img_url')->nullable();
+                $table->string('password');
+                $table->string('role')->nullable();
+                $table->boolean('is_verified')->default(0);
+                $table->timestamps();
+            });
+        }
 
     }
 

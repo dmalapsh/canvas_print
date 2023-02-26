@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\AccessType;
 
 class CreateAccessTemplatesTable extends Migration
 {
@@ -15,7 +16,7 @@ class CreateAccessTemplatesTable extends Migration
     {
         Schema::create('access_templates', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('type_id')->constrained('access_types');
+            $table->foreignIdFor(AccessType::class);
             $table->string('name');
             $table->json('data');
             $table->timestamps();
