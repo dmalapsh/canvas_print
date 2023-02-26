@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Client;
+use App\Models\AccessTemplate;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,8 +17,8 @@ class CreateAccessesTable extends Migration
     {
         Schema::create('accesses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->constrained('clients');
-            $table->foreignId('template_id')->constrained('access_templates');
+            $table->foreignIdFor(Client::class);
+            $table->foreignIdFor(AccessTemplate::class);
             $table->string('name');
             $table->json('data');
             $table->timestamps();

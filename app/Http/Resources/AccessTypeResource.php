@@ -12,11 +12,13 @@ class AccessTypeResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request) {
+    public function toArray($request)
+    {
         return [
             'id' => $this->id,
             'name' => $this->name,
             'data' => $this->data,
+            'docs'=> $this->docs,
         ];
     }
 }

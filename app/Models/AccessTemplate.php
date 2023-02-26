@@ -9,12 +9,14 @@ class AccessTemplate extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function accesses()
     {
-        return $this->hasMany(Access::class, 'template_id', 'id');
+        return $this->hasMany(Access::class, 'access_template_id', 'id');
     }
-    public function access_type()
+    public function accessType()
     {
-        return $this->belongsTo(AccessType::class, 'type_id', 'id');
+        return $this->belongsTo(AccessType::class, 'access_type_id', 'id');
     }
 }

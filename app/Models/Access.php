@@ -9,13 +9,15 @@ class Access extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function client()
     {
         return $this->belongsTo(Client::class, 'client_id', 'id');
     }
 
-    public function access_template()
+    public function accessTemplate()
     {
-        return $this->belongsTo(AccessTemplate::class, 'template_id', 'id');
+        return $this->belongsTo(AccessTemplate::class, 'access_template_id', 'id');
     }
 }
